@@ -6,17 +6,17 @@ RSpec.describe "Pets can be seen on index ", type: :feature do
       name: "Walter",
       age: "4",
       sex: "male",
-      shelter: "the lab"
-
-
+      shelter: "the lab",
+      image: "https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg"
     )
 
-    visit "/shelters"
-
-    expect(page).to have_content("figaro figaro figaro")
-
-    click_button "delete_button"
-    expect(page).not_to have_content("figaro figaro figaro")
+    visit "/pets"
+    
+    expect(page).to have_content(pet1.name)
+    expect(page).to have_content(pet1.age)
+    expect(page).to have_content(pet1.sex)
+    expect(page).to have_content(pet1.shelter)
+    expect(page).to have_css("img[src*='https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg']")
   end
 
 end

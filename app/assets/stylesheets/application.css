@@ -14,7 +14,7 @@
  *= require_self
  */
  .background img {
-   position:relative;
+   position:fixed;
    opacity:0.5;
    transform: scaleX(-1);
    background-size: cover;
@@ -78,4 +78,8 @@
 .pet-image {
   left: 50%;
   height: 40vh;
+}
+.pet-image-small {
+  left: 50%;
+  height: 20vh;
 }
