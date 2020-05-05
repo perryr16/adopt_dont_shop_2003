@@ -15,6 +15,7 @@ class PetsController < ApplicationController
       age: params[:pet][:age],
       sex: params[:pet][:sex],
       shelter: params[:pet][:shelter],
+      adoptable: params[:pet][:adoptable]
       })
 
       pet.save
@@ -23,6 +24,7 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    binding.pry
   end
 
 

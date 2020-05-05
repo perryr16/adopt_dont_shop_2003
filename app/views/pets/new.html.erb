@@ -24,13 +24,14 @@
     <p>Approximate age:</p>
     <input type="text" name="pet[age]">
     <p>Sex:</p>
-    <input type="radio" name="pet[sex]" value="male">
+    <input id="male" type ="radio" name="pet[sex]" value="male">
     <label for="male">Male</label><br>
-    <input type="radio" name="pet[sex]" value="female">
+    <input id="female" type="radio" name="pet[sex]" value="female">
     <label for="female">Female</label><br>
     <p>Name of Shelter:</p>
     <input type="text" name="pet[shelter]"><br>
-    <input class="submit_button" type="submit" value="Create Pet">
+    <input type="hidden" name="pet[adoptable]" value="true">
+    <input class="submit_button" name="submit_button" type="submit" value="Create Pet">
   </form>
 
 </div> /* final */

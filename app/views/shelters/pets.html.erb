@@ -1,0 +1,30 @@
+<div class="background">
+  <img src="https://wallpaperaccess.com/full/783057.jpg" alt="kitten">
+</div>
+
+<div class="content">
+  <div class="main_menu">
+    <a href="/">Main</a>
+    <a href="/shelters">Shelters</a>
+    <a href="/shelters/new">New Shelter</a>
+    <a href="/pets">Pets</a>
+    <a href="/pets/new">New Pet</a>
+
+  </div>
+
+  <h1><%= @shelter.name %> PETS!</h1>
+  <% @pets.each do |pet| %>
+  <ul>
+    <img class="pet-image-small" src="<%= pet.image %>" alt="<%= pet.name %> image"> <p>
+    <li class="pet-list">
+      <h2><a class="pet-link" href="/pets/<%= pet.id %>"><%= pet.name %></a></h2>
+      <p>Approximate Age: <%= pet.age %><p>
+      <p>Sex: <%= pet.sex %><p>
+      <p>Name of Shelter: <%= pet.shelter %><p>
+
+    </li>
+  </ul>
+  <% end %>
+
+
+</div>

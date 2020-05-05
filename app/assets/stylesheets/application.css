@@ -23,6 +23,7 @@
    font-family:"Arial";
    position: absolute;
    top:0;
+   margin-top: 40px;
 
  }
  .content {
@@ -31,10 +32,12 @@
 
  .main_menu {
    margin-left: -20px;
+   margin-top: -40px;
    background-color:black;
    overflow:hidden;
    height: 40px;
    width: 200vw;
+  position:fixed;
  }
  .main_menu a {
   float:left;
