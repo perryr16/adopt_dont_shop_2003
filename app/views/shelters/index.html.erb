@@ -16,6 +16,12 @@
     <li class="shelter-list">
       <h2><a class="shelter-link" href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></h2>
       <p><a class="shelter-edit" href="/shelters/<%= shelter.id %>/edit">Update Shelter</a></p>
+      <p>this is delete</p>
+      <form action="/shelters/<%= shelter.id %>" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="delete"/>
+      </form>
     </li>
   </ul>
   <% end %>
