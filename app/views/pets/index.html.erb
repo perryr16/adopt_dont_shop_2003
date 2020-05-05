@@ -5,26 +5,27 @@
 <div class="content">
   <div class="main_menu">
     <a href="/">Main</a>
-    <a class="active" href="/shelters">Shelters</a>
+    <a href="/shelters">Shelters</a>
     <a href="/shelters/new">New Shelter</a>
-    <a href="/pets">Pets</a>
+    <a class="active" href="/pets">Pets</a>
     <a href="/pets/new">New Pet</a>
 
   </div>
-  <h1>All Shelters</h1>
 
-  <% @shelters.each do |shelter| %>
+  <h1>PETS!</h1>
+  <% @pets.each do |pet| %>
   <ul>
-    <li class="shelter-list">
-      <h2><a class="shelter-link" href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></h2>
-      <p><a class="shelter-edit" href="/shelters/<%= shelter.id %>/edit">Update Shelter</a></p>
-      <form action="/shelters/<%= shelter.id %>" method="POST">
+    <li class="pet-list">
+      <h2><a class="pet-link" href="/pets/<%= pet.id %>"><%= pet.name %></a></h2>
+      <!-- <p><a class="pet-edit" href="/pet/<%= pet.id %>/edit">Update Pet</a></p>
+      <form action="/pets/<%= pet.id %>" method="POST">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <input type="hidden" name="_method" value="DELETE">
         <input type="submit" value="delete"/>
-      </form>
+      </form> -->
     </li>
   </ul>
   <% end %>
+
 
 </div>
