@@ -1,0 +1,35 @@
+<div class="background">
+  <img src="https://wallpaperaccess.com/full/783057.jpg" alt="kitten">
+</div>
+
+<div class="content">
+  <div class="main_menu">
+    <a href="/">Main</a>
+    <a href="/shelters">Shelters</a>
+    <a class="active" href="/shelters/new">New Shelter</a>
+  </div>
+
+  <h1>Enter A New Shelter</h1>
+
+  <form action="/shelters" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <p>Shelter Name:</p>
+    <input type="text" name="shelter[name]"/>
+    <p>Address:</p>
+    <input type="text" name="shelter[address]">
+    <p>City:</p>
+    <input type="text" name="shelter[city]">
+    <p>State:</p>
+    <input type="text" name="shelter[state]">
+    <p>Zip:</p>
+    <input type="text" name="shelter[zip]"><br>
+    <input class="submit_button" type="submit">
+  </form>
+
+</div> /* final */
+
+- name
+- address
+- city
+- state
+- zip
