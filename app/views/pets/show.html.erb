@@ -9,13 +9,15 @@
     <a href="/shelters/new">New Shelter</a>
     <a href="/pets">Pets</a>
     <a href="/pets/new">New Pet</a>
-
   </div>
+
   <h1>Pet Details</h1>
-  <p>Name: <%= @pet.name %><p>
+  <img class="pet-image" src="<%= @pet.image %>" alt="<%= @pet.name %> image"> <p>
+  <h3>Name: <%= @pet.name %></h3>
   <p>description: <%= @pet.description %><p>
-  <p>Image: <%= @pet.image %><p>
+
   <p>Approximate Age: <%= @pet.age %><p>
   <p>Sex: <%= @pet.sex %><p>
   <p>Name of Shelter: <%= @pet.shelter %><p>
+
 </div>

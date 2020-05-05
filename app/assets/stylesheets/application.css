@@ -75,3 +75,7 @@
   height: 30px;
   width: 120px;
 }
+.pet-image {
+  left: 50%;
+  height: 40vh;
+}

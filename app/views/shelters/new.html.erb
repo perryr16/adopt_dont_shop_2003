@@ -22,10 +22,13 @@
     <p>City:</p>
     <input type="text" name="shelter[city]">
     <p>State:</p>
-    <input type="text" name="shelter[state]">
+    <input type="text" name="shelter[state]"
+    pattern="[A-Za-z]{2}" title="two letter state abbrevaition">
     <p>Zip:</p>
-    <input type="text" name="shelter[zip]"><br>
-    <input class="submit_button" type="submit" value="Create Shelter">
+    <input type="text" name="shelter[zip]"
+    pattern="[0-9]{5}" title="5 digit zip code"><br>
+
+    <input class="submit_button" type="submit" name="submit_button" value="Create Shelter">
   </form>
 
 </div> /* final */
