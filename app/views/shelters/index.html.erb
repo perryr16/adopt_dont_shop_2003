@@ -9,6 +9,15 @@
     <a href="/shelters/new">New Shelter</a>
 
   </div>
-  <h1>Welcome to the Main Screen</h1>
-  <h2>also this</h2>
+  <h1>All Shelters</h1>
+
+  <% @shelters.each do |shelter| %>
+  <ul>
+    <li class="shelter-list">
+      <h2><a class="shelter-link" href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></h2>
+      <p><a class="shelter-edit" href="/shelters/<%= shelter.id %>/edit">Update Shelter</a></p>
+    </li>
+  </ul>
+  <% end %>
+
 </div>
