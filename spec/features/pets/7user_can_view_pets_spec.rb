@@ -14,7 +14,7 @@ RSpec.describe "Pets can be seen on index ", type: :feature do
       age: "4",
       sex: "male",
       description: "a bit mischevious",
-      shelter_name: "the lab",
+
       image: "https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg",
       shelter_id: shelter1.id
     )
@@ -25,8 +25,8 @@ RSpec.describe "Pets can be seen on index ", type: :feature do
     expect(page).to have_content(pet1.name)
     expect(page).to have_content(pet1.age)
     expect(page).to have_content(pet1.sex)
-    # expect(page).to have_content(pet.description)
-    expect(page).to have_content(pet1.shelter_name)
+    expect(page).to have_content(pet1.shelter.name)
+
     expect(page).to have_css("img[src*='https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg']")
   end
 

@@ -12,11 +12,11 @@
 
   </div>
   <h1 class="header">Shelter Details</h1>
-  <p>Name: <%= @shelter.name %><p>
-  <p>Address: <%= @shelter.address %><p>
-  <p>City: <%= @shelter.city %><p>
-  <p>State: <%= @shelter.state %><p>
-  <p>Zip: <%= @shelter.zip %><p>
+  <h2 class="bold">Name: <%= @shelter.name %></h2>
+  <p class="bold">Address: <%= @shelter.address %></p>
+  <p class="bold">City: <%= @shelter.city %></p>
+  <p class="bold">State: <%= @shelter.state %></p>
+  <p class="bold">Zip: <%= @shelter.zip %></p>
   <a class="edit" href="/shelters/<%= @shelter.id%>/pets">See Adoptable Pets!</a>
 <br><br>
   <p><a class="edit" href="/shelters/<%= @shelter.id %>/edit">Update Shelter</a></p>

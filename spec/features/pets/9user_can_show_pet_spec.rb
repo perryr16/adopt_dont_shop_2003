@@ -14,7 +14,7 @@ RSpec.describe "pet show ", type: :feature do
       description: "I'll be honest, he's a killer",
       age: "10",
       sex: "male",
-      shelter_name: "the lab",
+
       image: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg",
       shelter_id: shelter1.id
     )
@@ -26,7 +26,10 @@ RSpec.describe "pet show ", type: :feature do
     expect(page).to have_content(pet1.name)
     expect(page).to have_content(pet1.age)
     expect(page).to have_content(pet1.sex)
-    expect(page).to have_content(pet1.shelter_name)
+    expect(page).to have_content(pet1.description)
+    expect(page).to have_content(pet1.shelter.name)
+    expect(page).to have_content(pet1.adoption_status)
+
     expect(page).to have_css("img[src*='https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg']")
 
 

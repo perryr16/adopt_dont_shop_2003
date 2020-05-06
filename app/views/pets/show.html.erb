@@ -14,7 +14,7 @@
   <img class="pet-image" src="<%= @pet.image %>" alt="<%= @pet.name %> image"> <p>
   <h3>Name: <%= @pet.name %></h3>
   <p>Description: <%= @pet.description %></p>
-
+  <p>Shelter: <a class="shelter-link hover" href="/shelters/<%= @pet.shelter_id %>"><%= @pet.shelter.name %></a></p>
   <p>Approximate Age: <%= @pet.age %><p>
   <p>Sex: <%= @pet.sex %><p>
 

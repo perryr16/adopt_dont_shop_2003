@@ -6,6 +6,10 @@ class Pet < ApplicationRecord
     return "Pending" if !adoptable
   end
 
+  def self.total_pets
+    count
+  end
+
 
 
 end
