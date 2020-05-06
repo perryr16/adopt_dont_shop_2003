@@ -18,4 +18,11 @@
   <p>State: <%= @shelter.state %><p>
   <p>Zip: <%= @shelter.zip %><p>
   <a class="edit" href="/shelters/<%= @shelter.id%>/pets">See Adoptable Pets!</a>
+<br><br>
+  <p><a class="edit" href="/shelters/<%= @shelter.id %>/edit">Update Shelter</a></p>
+  <form class="delete-form" action="/shelters/<%= @shelter.id %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="delete_button" value="delete"/>
+  </form>
 </div>

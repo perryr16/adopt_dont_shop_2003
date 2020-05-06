@@ -24,13 +24,15 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    @shelter = Shelter.all.find {|shelter| shelter.name == @pet.shelter}
+
   end
 
   def edit
     @pet = Pet.find(params[:id])
   end
 
-  def update 
+  def update
     pet = Pet.find(params[:id])
     pet.update({
       name: params[:pet][:name],

@@ -4,4 +4,5 @@ class Pet < ApplicationRecord
     return "Adoptable" if adoptable
     return "Pending" if !adoptable
   end
+
 end
