@@ -36,7 +36,6 @@ RSpec.describe "pet update ", type: :feature do
     click_button "submit_button"
 
     click_link "Goose"
-save_and_open_page
 
     expect(page).not_to have_content(pet1.name)
     expect(page).not_to have_content(pet1.age)

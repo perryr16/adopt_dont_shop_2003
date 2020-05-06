@@ -62,5 +62,23 @@ class PetsController < ApplicationController
     redirect_to '/pets'
   end
 
+  def adoptable
+    @pet = Pet.find(params[:id])
+    @pet.update({
+      adoptable: params[:pet][:adoptable]
+      # adoptable: false
+      })
+    redirect_to "/pets/#{@pet.id}"
+  end
+
+  def pending
+    @pet = Pet.find(params[:id])
+    @pet.update({
+      adoptable: params[:pet][:adoptable]
+      # adoptable: true
+      })
+    redirect_to "/pets/#{@pet.id}"
+  end
+
 
 end
