@@ -25,12 +25,22 @@
    position: absolute;
    top:0;
    margin-top: 40px;
-
  }
  .content {
    margin-left: 20px;
  }
-
+.header {
+  color: white;
+    text-shadow:
+        0.07em 0 black,
+        0 0.07em black,
+        -0.07em 0 black,
+        0 -0.07em black;
+}
+.welcome-statement {
+  color: black;
+  font-weight: bold;
+}
  .main_menu {
    margin-left: -20px;
    margin-top: -40px;
@@ -91,7 +101,7 @@
   border-left-style: solid;
   border-left-width: 20px;
   border-left-color:black;
-  background: rgba(0,0,0,0.1);
+  background: rgba(255,255,255,0.2);
 }
 .edit {
   color:white;

@@ -2,6 +2,14 @@ class PetsController < ApplicationController
 
   def index
     @pets = Pet.all
+    @shelters = Shelter.all
+    # {pet.shelter => shelter.id}
+    @pet_shelter_id = Hash.new { |hash, key| hash[key] = 0 }
+    @pets.each do |pet|
+      shelter = @shelters.find {|shelter| shelter.name == pet.shelter}
+      @pet_shelter_id[pet.shelter] = shelter.id
+    end
+
   end
 
   def new

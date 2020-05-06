@@ -10,6 +10,20 @@ RSpec.describe "pet update ", type: :feature do
       shelter: "the lab",
       image: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg"
     )
+    shelter1 = Shelter.create(
+      name: "the lab",
+      address: "123 Dog Street",
+      city: "Dog Town",
+      state: "DO",
+      zip: "12345"
+    )
+    shelter2 = Shelter.create(
+      name: "Barks and Crafts",
+      address: "456 Pup Place",
+      city: "Newfoundland",
+      state: "PP",
+      zip: "67890"
+    )
 
     visit "/pets/#{pet1.id}/edit"
 
@@ -22,7 +36,7 @@ RSpec.describe "pet update ", type: :feature do
     click_button "submit_button"
 
     click_link "Goose"
-
+save_and_open_page
 
     expect(page).not_to have_content(pet1.name)
     expect(page).not_to have_content(pet1.age)

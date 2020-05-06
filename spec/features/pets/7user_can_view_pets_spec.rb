@@ -9,9 +9,16 @@ RSpec.describe "Pets can be seen on index ", type: :feature do
       shelter: "the lab",
       image: "https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg"
     )
+    shelter1 = Shelter.create(
+      name: "the lab",
+      address: "123 Dog Street",
+      city: "Dog Town",
+      state: "DO",
+      zip: "12345"
+    )
 
     visit "/pets"
-    
+
     expect(page).to have_content(pet1.name)
     expect(page).to have_content(pet1.age)
     expect(page).to have_content(pet1.sex)

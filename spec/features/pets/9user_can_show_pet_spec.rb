@@ -10,6 +10,13 @@ RSpec.describe "pet show ", type: :feature do
       shelter: "the lab",
       image: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg"
     )
+    shelter1 = Shelter.create(
+      name: "the lab",
+      address: "123 Dog Street",
+      city: "Dog Town",
+      state: "DO",
+      zip: "12345"
+    )
 
     visit "/pets/#{pet1.id}"
 
