@@ -18,7 +18,7 @@
 
   <p>Approximate Age: <%= @pet.age %><p>
   <p>Sex: <%= @pet.sex %><p>
-  <p>Name of Shelter: <a href="/shelters/<%= @shelter.id %>"><%= @pet.shelter %></a><p>
+  <p>Name of Shelter: <a href="/shelters/<%= @shelter.id %>"><%= @pet.shelter_name %></a><p>
   <p>Adoption status: <%= @pet.adoption_status %></p>
   <% if @pet.adoptable %>
     <form class="" action="/pets/<%= @pet.id %>/pending" method="post">

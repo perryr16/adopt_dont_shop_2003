@@ -6,8 +6,8 @@ class PetsController < ApplicationController
     # {pet.shelter => shelter.id}
     @pet_shelter_id = Hash.new { |hash, key| hash[key] = 0 }
     @pets.each do |pet|
-      shelter = @shelters.find {|shelter| shelter.name == pet.shelter}
-      @pet_shelter_id[pet.shelter] = shelter.id
+      shelter = @shelters.find {|shelter| shelter.name == pet.shelter_name}
+      @pet_shelter_id[pet.shelter_name] = shelter.id
     end
 
   end
@@ -22,7 +22,7 @@ class PetsController < ApplicationController
       description: params[:pet][:description],
       age: params[:pet][:age],
       sex: params[:pet][:sex],
-      shelter: params[:pet][:shelter],
+      shelter: params[:pet][:shelter_name],
       adoptable: params[:pet][:adoptable]
       })
 
@@ -48,7 +48,7 @@ class PetsController < ApplicationController
       description: params[:pet][:description],
       age: params[:pet][:age],
       sex: params[:pet][:sex],
-      shelter: params[:pet][:shelter],
+      shelter: params[:pet][:shelter_name],
       adoptable: params[:pet][:adoptable]
       })
 
