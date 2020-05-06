@@ -20,7 +20,7 @@ RSpec.describe "pet create ", type: :feature do
     choose("male")
     fill_in "pet[shelter]", with: "the lab"
     fill_in "pet[image]", with: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg"
-    click_button ""
+    click_button "submit_button"
 
     pet1 = Pet.create(
       name: "Remy",
