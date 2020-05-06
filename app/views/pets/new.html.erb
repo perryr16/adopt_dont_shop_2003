@@ -8,7 +8,6 @@
     <a href="/shelters">Shelters</a>
     <a href="/shelters/new">New Shelter</a>
     <a href="/pets">Pets</a>
-    <a class="active" href="/pets/new">New Pet</a>
   </div>
 
   <h1 class="header">Enter A New Pet</h1>
@@ -28,9 +27,9 @@
     <label for="male">Male</label><br>
     <input id="female" type="radio" name="pet[sex]" value="female">
     <label for="female">Female</label><br>
-    <p>Name of Shelter:</p>
-    <input type="text" name="pet[shelter_name]"><br>
+    <br>
     <input type="hidden" name="pet[adoptable]" value="true">
+    <input type="hidden" name="pet[shelter_id]" value=":id">
     <input class="submit_button" name="submit_button" type="submit" value="Create Pet">
   </form>
 

@@ -8,7 +8,6 @@
     <a href="/shelters">Shelters</a>
     <a href="/shelters/new">New Shelter</a>
     <a href="/pets">Pets</a>
-    <a href="/pets/new">New Pet</a>
   </div>
 
   <h1 class="header">Pet Details</h1>
@@ -18,7 +17,7 @@
 
   <p>Approximate Age: <%= @pet.age %><p>
   <p>Sex: <%= @pet.sex %><p>
-  <p>Name of Shelter: <a href="/shelters/<%= @shelter.id %>"><%= @pet.shelter_name %></a><p>
+
   <p>Adoption status: <%= @pet.adoption_status %></p>
   <% if @pet.adoptable %>
     <form class="" action="/pets/<%= @pet.id %>/pending" method="post">

@@ -3,32 +3,27 @@ class PetsController < ApplicationController
   def index
     @pets = Pet.all
     @shelters = Shelter.all
-    # {pet.shelter => shelter.id}
-    @pet_shelter_id = Hash.new { |hash, key| hash[key] = 0 }
-    @pets.each do |pet|
-      shelter = @shelters.find {|shelter| shelter.name == pet.shelter_name}
-      @pet_shelter_id[pet.shelter_name] = shelter.id
-    end
 
   end
 
   def new
   end
 
-  def create
-    pet = Pet.new({
-      name: params[:pet][:name],
-      image: params[:pet][:image],
-      description: params[:pet][:description],
-      age: params[:pet][:age],
-      sex: params[:pet][:sex],
-      shelter: params[:pet][:shelter_name],
-      adoptable: params[:pet][:adoptable]
-      })
-
-      pet.save
-      redirect_to '/pets'
-  end
+  # def create
+  #   binding.pry
+  #   pet = Pet.new({
+  #     name: params[:pet][:name],
+  #     image: params[:pet][:image],
+  #     description: params[:pet][:description],
+  #     age: params[:pet][:age],
+  #     sex: params[:pet][:sex],
+  #     shelter_name: params[:pet][:shelter_name],
+  #     adoptable: params[:pet][:adoptable]
+  #     })
+  #
+  #     pet.save
+  #     redirect_to '/pets'
+  # end
 
   def show
     @pet = Pet.find(params[:id])
@@ -48,7 +43,7 @@ class PetsController < ApplicationController
       description: params[:pet][:description],
       age: params[:pet][:age],
       sex: params[:pet][:sex],
-      shelter: params[:pet][:shelter_name],
+      shelter_name: params[:pet][:shelter_name],
       adoptable: params[:pet][:adoptable]
       })
 
