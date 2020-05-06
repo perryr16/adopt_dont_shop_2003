@@ -1,0 +1,38 @@
+<div class="background">
+  <img src="https://wallpaperaccess.com/full/783057.jpg" alt="kitten">
+</div>
+
+<div class="content">
+  <div class="main_menu">
+    <a href="/">Main</a>
+    <a href="/shelters">Shelters</a>
+    <a href="/shelters/new">New Shelter</a>
+    <a href="/pets">Pets</a>
+    <a href="/pets/new">New Pet</a>
+  </div>
+
+  <h1>Update <%= @pet.name %></h1>
+
+  <form action="/pets/<%= @pet.id %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="PATCH" />
+    <p>Pet Name:</p>
+    <input type="text" name="pet[name]" value="<%= @pet.name %>"/>
+    <p>Pet description</p>
+    <textarea name="pet[description]" ><%= @pet.description %></textarea>
+    <p>image url:</p>
+    <input type="text" name="pet[image]"value="<%= @pet.image %>">
+    <p>Approximate age:</p>
+    <input type="text" name="pet[age]"value="<%= @pet.age %>">
+    <p>Sex:</p>
+    <input id="male" type ="radio" name="pet[sex]" value="male">
+    <label for="male">Male</label><br>
+    <input id="female" type="radio" name="pet[sex]" value="female">
+    <label for="female">Female</label><br>
+    <p>Name of Shelter:</p>
+    <input type="text" name="pet[shelter]"value="<%= @pet.shelter %>"><br>
+    <input type="hidden" name="pet[adoptable]" value="true">
+    <input class="submit_button" name="submit_button" type="submit" value="Update Pet">
+  </form>
+
+</div> /* final */

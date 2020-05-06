@@ -50,7 +50,8 @@ class SheltersController < ApplicationController
 
   def pets
     @shelter = Shelter.find(params[:id])
-    @pets = Pet.all.find_all {|pet| pet.shelter == @shelter.name }
+    shelter_pets = Pet.all.find_all {|pet| pet.shelter == @shelter.name}
+    @pets = shelter_pets.find_all { |pet| pet.adoptable}
   end
 
 end

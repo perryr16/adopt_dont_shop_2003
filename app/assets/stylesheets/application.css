@@ -86,3 +86,32 @@
   left: 50%;
   height: 20vh;
 }
+.pet-list {
+  border-left-style: solid;
+  border-left-width: 20px;
+  border-left-color:black;
+  background: rgba(0,0,0,0.1);
+}
+.edit {
+  color:white;
+  text-decoration:none;
+  padding: 5px 10px 5px 10px;
+  background-color: black;
+}
+.edit:hover {
+ background-color: #ddd;
+ color: black;
+}
+.delete-form input{
+  color:white;
+  background-color: black;
+  width: 100px;
+  height: 20px;
+  font-weight: bold;
+  font-size: 12px;
+  outline: 1px solid red;
+}
+.delete-form input:hover {
+  background-color: #ddd;
+  color: black;
+}

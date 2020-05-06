@@ -14,16 +14,18 @@
 
   <h1><%= @shelter.name %> PETS!</h1>
   <% @pets.each do |pet| %>
-  <ul>
-    <img class="pet-image-small" src="<%= pet.image %>" alt="<%= pet.name %> image"> <p>
-    <li class="pet-list">
-      <h2><a class="pet-link" href="/pets/<%= pet.id %>"><%= pet.name %></a></h2>
-      <p>Approximate Age: <%= pet.age %><p>
-      <p>Sex: <%= pet.sex %><p>
-      <p>Name of Shelter: <%= pet.shelter %><p>
 
-    </li>
-  </ul>
+  <div class="pet-list">
+
+    <img class="pet-image-small" src="<%= pet.image %>" alt="<%= pet.name %> image"> <p>
+    <h2><a class="pet-link" href="/pets/<%= pet.id %>"><%= pet.name %></a></h2>
+    <p>Approximate Age: <%= pet.age %><p>
+    <p>Sex: <%= pet.sex %><p>
+    <p>Name of Shelter: <%= pet.shelter %><p>
+    <p><%= pet.description %></p>
+  </div>
+
+
   <% end %>
 
 
