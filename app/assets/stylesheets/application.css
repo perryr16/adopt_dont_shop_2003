@@ -127,7 +127,7 @@
 .delete-form input{
   color:white;
   background-color: gray;
-  width: 100px;
+  /* width: 100px; */
   height: 20px;
   font-weight: bold;
   font-size: 12px;

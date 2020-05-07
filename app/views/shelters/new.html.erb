@@ -13,22 +13,21 @@
 
   <h1 class="header">Enter A New Shelter</h1>
 
-  <form action="/shelters" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <p>Shelter Name:</p>
-    <input type="text" name="shelter[name]"/>
-    <p>Address:</p>
-    <input type="text" name="shelter[address]">
-    <p>City:</p>
-    <input type="text" name="shelter[city]">
-    <p>State:</p>
-    <input type="text" name="shelter[state]"
-    pattern="[A-Za-z]{2}" title="two letter state abbrevaition">
-    <p>Zip:</p>
-    <input type="text" name="shelter[zip]"
-    pattern="[0-9]{5}" title="5 digit zip code"><br>
+<section class="bold">
+  <%= form_tag '/shelters' do %>
+    <%= label_tag :name%><br>
+    <%= text_field_tag :name%><br><br>
+    <%= label_tag :address%><br>
+    <%= text_field_tag :address%><br><br>
+    <%= label_tag :city%><br>
+    <%= text_field_tag :city%><br><br>
+    <%= label_tag :state%><br>
+    <%= text_field_tag :state%><br><br>
+    <%= label_tag :zip%><br>
+    <%= text_field_tag :zip%><br><br>
+    <%= submit_tag  "Create Shelter"%>
+  <% end %>
+</section>
 
-    <input class="submit_button" type="submit" name="submit_button" value="Create Shelter">
-  </form>
 
 </div> /* final */

@@ -5,34 +5,26 @@ RSpec.describe "Shleters edit page", type: :feature do
 
     visit "/shelters"
 
-    expect(page).not_to have_content("figaro figaro figaro")
+    expect(page).not_to have_content("Barks and Crafts")
+
     visit "/shelters/new"
 
+    fill_in "name", with: "Barks and Crafts"
+    fill_in "address", with: "123 Ruff St"
+    fill_in "city", with: "Dog town"
+    fill_in "state", with: "DG"
+    fill_in "zip", with: "99999"
+    click_on "Create Shelter"
 
-    fill_in "shelter[name]", with: "figaro figaro figaro"
-    fill_in "shelter[address]", with: "123 the shop"
-    fill_in "shelter[city]", with: "disney"
-    fill_in "shelter[state]", with: "DI"
-    fill_in "shelter[zip]", with: "33333"
-    click_button "submit_button"
+    expect(page).to have_content("Barks and Crafts")
 
-    shelter1 = Shelter.create(
-      name: "figaro figaro figaro",
-      address: "123 the shop",
-      city: "disney",
-      state: "DI",
-      zip: "33333"
-    )
+    click_link "Barks and Crafts"
 
-    expect(page).to have_content(shelter1.name)
-
-    click_link "#{shelter1.name}"
-
-    expect(page).to have_content("Name: #{shelter1.name}")
-    expect(page).to have_content("Address: #{shelter1.address}")
-    expect(page).to have_content("City: #{shelter1.city}")
-    expect(page).to have_content("State: #{shelter1.state}")
-    expect(page).to have_content("Zip: #{shelter1.zip}")
+    expect(page).to have_content("Name: Barks and Crafts")
+    expect(page).to have_content("Address: 123 Ruff St")
+    expect(page).to have_content("City: Dog town")
+    expect(page).to have_content("State: DG")
+    expect(page).to have_content("Zip: 99999")
 
 
   end
