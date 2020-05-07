@@ -48,10 +48,10 @@ class PetsController < ApplicationController
   end
 
   def adoptable
-binding.pry
+
     @pet = Pet.find(params[:id])
     @pet.update({
-      adoptable: false
+      adoptable: true
       # adoptable: false
       })
 
@@ -62,7 +62,7 @@ binding.pry
 
     @pet = Pet.find(params[:id])
     @pet.update({
-      adoptable: true
+      adoptable: false
       # adoptable: true
       })
     redirect_to "/pets/#{@pet.id}"

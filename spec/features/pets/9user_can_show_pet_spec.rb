@@ -60,11 +60,11 @@ RSpec.describe "pet show ", type: :feature do
 
     if pet1.adoptable
       expect(page).to have_content("Adoptable")
-      click_button("submit_button")
+      click_button("Change to Adoption Pending")
       expect(page).to have_content("Pending")
     elsif !pet1.adoptable
       expect(page).to have_content("Pending")
-      click_button("submit_button")
+      click_button("Change to Adoptable")
       expect(page).to have_content("Adoptable")
     end
   end
