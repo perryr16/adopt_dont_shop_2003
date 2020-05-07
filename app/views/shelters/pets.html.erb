@@ -13,8 +13,9 @@
 
   <h1 class="header"><%= @shelter.name %> PETS!</h1>
   <h2>Pet Count: <%= @pets.length %></h2>
-  <a calss="pet-link hover" href="/shelters/<%= @shelter.id %>/pets?adpoptable=true">Show Only Adoptable Pets</a>
-  <a class="pet-link hover bold" href="/shelters/<%= @shelter.id %>/pets/new">New Pet</a><br><br>
+  <p><a class="pet-link hover bold" href="/shelters/<%= @shelter.id %>/pets/new">New Pet</a></p>
+  <p><a class="pet-link hover" href="/shelters/<%= @shelter.id %>/pets?adoptable=true">Show Only Adoptable Pets</a></p>
+  <p><a class="pet-link hover" href="/shelters/<%= @shelter.id %>/pets?adoptable=false">Show Only Pending Adoption Pets</a></p>
   <% @pets.each do |pet| %>
 
   <div class="pet-list">

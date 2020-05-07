@@ -56,6 +56,12 @@ class SheltersController < ApplicationController
       pet.shelter_id == params[:id].to_i
     end
 
+    if params[:adoptable] == "true"
+      @pets = @pets.find_all {|pet| pet.adoptable}
+
+    elsif params[:adoptable] == "false"
+      @pets = @pets.find_all {|pet| !pet.adoptable}
+    end
     # @pets = shelter_pets.find_all { |pet| pet.adoptable}
   end
 
