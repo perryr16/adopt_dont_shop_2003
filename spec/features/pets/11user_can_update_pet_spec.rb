@@ -32,7 +32,7 @@ RSpec.describe "pet update ", type: :feature do
     fill_in "description", with: "hell of a wingman"
     fill_in "image", with: "https://ih1.redbubble.net/image.489763103.8167/flat,750x1000,075,f.u2.jpg"
     fill_in "age", with: "4"
-    # choose("female")
+    # choose("sex")
     click_button "Update Pet"
 
     click_link "Goose"

@@ -53,20 +53,20 @@ RSpec.describe "pet show ", type: :feature do
       age: "10",
       sex: "male",
       image: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg",
-      shelter_id: shelter1.id
+      shelter_id: shelter1.id,
+      adoptable: true
     )
 
     visit "/pets/#{pet1.id}"
 
-    if pet1.adoptable
-      expect(page).to have_content("Adoptable")
-      click_button("Change to Adoption Pending")
-      expect(page).to have_content("Pending")
-    elsif !pet1.adoptable
-      expect(page).to have_content("Pending")
-      click_button("Change to Adoptable")
-      expect(page).to have_content("Adoptable")
-    end
+    expect(page).to have_content("Adoptable")
+    click_button("Change to Adoption Pending")
+    expect(page).to have_content("Pending")
+
+    click_button("Change to Adoptable")
+    expect(page).to have_content("Adoptable")
+
+
   end
 
 end
