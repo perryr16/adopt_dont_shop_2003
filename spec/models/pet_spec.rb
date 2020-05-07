@@ -38,7 +38,8 @@ RSpec.describe Pet, type: :model do
     )
     pets = Pet.adoptable_first
 
-    expect(pets.first).to eql(pet2)
+    expect(pets.first.adoptable).to eql(true)
+    expect(pets.last.adoptable).to eql(false)
   end
 
 

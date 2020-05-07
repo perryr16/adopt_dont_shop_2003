@@ -12,7 +12,7 @@ RSpec.describe "Shleters can be deleted ", type: :feature do
 
     visit "/shelters"
     expect(page).to have_content("figaro figaro figaro")
-    click_button "delete_button"
+    click_button "#{shelter1.name}_delete_button"
     expect(page).not_to have_content("figaro figaro figaro")
 end
 
@@ -32,7 +32,7 @@ it "can delete a shelter from show" do
     expect(page).to have_content("City: #{shelter1.city}")
     expect(page).to have_content("State: #{shelter1.state}")
     expect(page).to have_content("Zip: #{shelter1.zip}")
-    click_button "delete_button"
+    click_button "#{shelter1.name}_delete_button"
     expect(page).not_to have_content("Name: #{shelter1.name}")
     expect(page).not_to have_content("Address: #{shelter1.address}")
     expect(page).not_to have_content("City: #{shelter1.city}")

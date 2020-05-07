@@ -12,15 +12,19 @@
 
   </div>
   <h1 class="header">All Shelters</h1>
+  <p><a class="pet-link hover" href="/shelters?num_pets=true">Sort Shelters by Number of Pets</a></p>
+  <p><a class="pet-link hover" href="/shelters?alphabetical=true">Sort Shelters by Alpbetical Order</a></p>
+
 
   <% @shelters.each do |shelter| %>
 
       <h2><a class="shelter-link" href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></h2>
+      <p>Pet Count: <%= shelter.pets.count %></p>
       <p><a class="edit" href="/shelters/<%= shelter.id %>/edit">Update Shelter</a></p>
       <form class="delete-form" action="/shelters/<%= shelter.id %>" method="POST">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" name="delete_button" value="delete"/>
+        <input type="submit" name="<%= shelter.name %>_delete_button" value="delete"/>
       </form>
 
   <% end %>
