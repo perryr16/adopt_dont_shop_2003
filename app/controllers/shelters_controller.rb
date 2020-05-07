@@ -5,7 +5,7 @@ class SheltersController < ApplicationController
     @pets = Pet.all
 
     if params[:alphabetical] == "true"
-      @shelters = @shelters.sort_by { |shelter| shelter.name}
+      @shelters = @shelters.sort_by { |shelter| shelter.name.downcase}
     elsif params[:num_pets] == "true"
       @shelters = @shelters.sort_by {|shelter| shelter.pets.count}.reverse
     end
