@@ -55,16 +55,16 @@ class SheltersController < ApplicationController
     redirect_to '/shelters'
   end
 
-  def pets
-    @shelter = Shelter.find(params[:id])
-    @pets = Pet.where(shelter_id: params[:id]).order(:adoptable).reverse_order
-
-    if params[:adoptable] == "true"
-      @pets = @pets.where(adoptable: true)
-    elsif params[:adoptable] == "false"
-      @pets = @pets.where(adoptable: false)
-    end
-
-  end
+  # def pets
+  #   @shelter = Shelter.find(params[:id])
+  #   @pets = Pet.where(shelter_id: params[:id]).order(:adoptable).reverse_order
+  #
+  #   if params[:adoptable] == "true"
+  #     @pets = @pets.where(adoptable: true)
+  #   elsif params[:adoptable] == "false"
+  #     @pets = @pets.where(adoptable: false)
+  #   end
+  #
+  # end
 
 end

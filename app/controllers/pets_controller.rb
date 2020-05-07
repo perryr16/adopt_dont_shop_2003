@@ -7,6 +7,9 @@ class PetsController < ApplicationController
       @pets = Pet.where(adoptable: true)
     elsif params[:adoptable] == "false"
       @pets = Pet.where(adoptable: false)
+    elsif !params[:id].nil?
+      @shelter = Shelter.find(params[:id])
+      @pets = Pet.where(shelter_id: params[:id]).order(:adoptable).reverse_order
     else
       @pets = Pet.order(:adoptable).reverse_order
     end
