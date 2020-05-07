@@ -1,13 +1,14 @@
 class PetsController < ApplicationController
 
   def index
-    @pets = Pet.adoptable_first
     @shelters = Shelter.all
 
     if params[:adoptable] == "true"
-      @pets = @pets.find_all {|pet| pet.adoptable}
+      @pets = Pet.where(adoptable: true)
     elsif params[:adoptable] == "false"
-      @pets = @pets.find_all {|pet| !pet.adoptable}
+      @pets = Pet.where(adoptable: false)
+    else
+      @pets = Pet.order(:adoptable).reverse_order
     end
 
   end
@@ -35,8 +36,7 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
-    @shelter = Shelter.all.find {|shelter| shelter.name == @pet.shelter}
-
+    @shelter = Shelter.where(name: @pet.shelter)
   end
 
   def edit
@@ -59,8 +59,6 @@ class PetsController < ApplicationController
   end
 
   def destroy
-    # pets = Pet.all
-    # pets.destroy(params[:id])
     Pet.destroy(params[:id])
     redirect_to '/pets'
   end

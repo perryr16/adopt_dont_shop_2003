@@ -5,8 +5,9 @@ class SheltersController < ApplicationController
     @pets = Pet.all
 
     if params[:alphabetical] == "true"
-      @shelters = @shelters.sort_by { |shelter| shelter.name.downcase}
+      @shelters = Shelter.order("lower(name)")
     elsif params[:num_pets] == "true"
+      # @shelters = Shelter.order(:pets)
       @shelters = @shelters.sort_by {|shelter| shelter.pets.count}.reverse
     end
   end
@@ -56,39 +57,14 @@ class SheltersController < ApplicationController
 
   def pets
     @shelter = Shelter.find(params[:id])
-    all_pets = Pet.adoptable_first
-    @pets = all_pets.find_all do |pet|
-      pet.shelter_id == params[:id].to_i
-    end
+    @pets = Pet.where(shelter_id: params[:id]).order(:adoptable).reverse_order
 
     if params[:adoptable] == "true"
-      @pets = @pets.find_all {|pet| pet.adoptable}
+      @pets = @pets.where(adoptable: true)
     elsif params[:adoptable] == "false"
-      @pets = @pets.find_all {|pet| !pet.adoptable}
+      @pets = @pets.where(adoptable: false)
     end
-    # @pets = shelter_pets.find_all { |pet| pet.adoptable}
-  end
-  #
-  # def new_pet
-  #   @shelter = Shelter.find(params[:id])
-  # end
-  #
-  # def create_pet
-  #   shelter = Shelter.find(params[:id])
-  #   pet = Pet.new({
-  #     name: params[:name],
-  #     image: params[:image],
-  #     description: params[:description]
-  #     age: params[:age],
-  #     sex: params[:sex],
-  #     adoptable: true,
-  #     shelter_id: params[:id]
-  #
-  #     })
-  #
-  #     pet.save
-  #     redirect_to "/shelters/#{shelter.id}/pets"
-  # end
 
+  end
 
 end
