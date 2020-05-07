@@ -12,27 +12,6 @@
   </div>
 
   <h1 class="header">PETS!</h1>
-  <% @pets.each do |pet| %>
-  <div class="pet-list">
-
-      
-      <h2><a class="pet-link hover" href="/pets/<%= pet.id %>"><%= pet.name %></a></h2>
-      <p>Approximate Age: <%= pet.age %><p>
-      <p>Sex: <%= pet.sex %><p>
-      <p>Shelter: <a class="shelter-link hover" href="/shelters/<%= pet.shelter_id %>"><%= pet.shelter.name %></a></p>
-
-      <a class="edit" href="/pets/<%= pet.id %>/edit">Update Pet</a><br><br>
-      <form class= "delete-form" action="/pets/<%= pet.id %>" method="POST">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" name="delete_button" value="Delete"/>
-      </form>
-
+  <p><%= @pets %></p>
 
   </div>
-  <br>
-
-  <% end %>
-
-
-</div>
