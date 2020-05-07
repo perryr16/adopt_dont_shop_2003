@@ -1,7 +1,6 @@
 class PetsController < ApplicationController
 
   def index
-    # @pets = Pet.all
     @pets = Pet.adoptable_first
     @shelters = Shelter.all
 
@@ -42,28 +41,24 @@ class PetsController < ApplicationController
   end
 
   def destroy
-    pets = Pet.all
-    pets.destroy(params[:id])
+    # pets = Pet.all
+    # pets.destroy(params[:id])
+    Pet.destroy(params[:id])
     redirect_to '/pets'
   end
 
   def adoptable
-
     @pet = Pet.find(params[:id])
     @pet.update({
       adoptable: true
-      # adoptable: false
       })
-
     redirect_to "/pets/#{@pet.id}"
   end
 
   def pending
-
     @pet = Pet.find(params[:id])
     @pet.update({
       adoptable: false
-      # adoptable: true
       })
     redirect_to "/pets/#{@pet.id}"
   end
