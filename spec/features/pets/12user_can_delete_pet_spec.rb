@@ -27,7 +27,7 @@ RSpec.describe "pet update ", type: :feature do
     expect(page).to have_content(pet1.sex)
     expect(page).to have_css("img[src*='https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg']")
     expect(page).to have_content(pet1.adoption_status)
-    click_button("#{pet1.name}_delete_button")
+    click_button("Delete #{pet1.name}")
 
     expect(page).not_to have_content(pet1.name)
     expect(page).not_to have_content(pet1.age)
@@ -37,7 +37,7 @@ RSpec.describe "pet update ", type: :feature do
 
   end
 
-  it "can delete pets from pet index" do
+  it "can delete pets from shelter pet index" do
     shelter1 = Shelter.create(
       name: "the lab",
       address: "123 Dog Street",
@@ -55,13 +55,12 @@ RSpec.describe "pet update ", type: :feature do
 
     visit "/shelters/#{shelter1.id}/pets"
 
-
     expect(page).to have_content(pet1.name)
     expect(page).to have_content(pet1.shelter.name)
     expect(page).to have_content(pet1.age)
     expect(page).to have_content(pet1.sex)
     expect(page).to have_css("img[src*='https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg']")
-    click_button("#{pet1.name}_delete_button")
+    click_button("Delete #{pet1.name}")
 
     expect(page).not_to have_content(pet1.name)
     expect(page).not_to have_content(pet1.age)
@@ -95,7 +94,7 @@ RSpec.describe "pet update ", type: :feature do
     expect(page).to have_content(pet1.age)
     expect(page).to have_content(pet1.sex)
     expect(page).to have_css("img[src*='https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg']")
-    click_button("#{pet1.name}_delete_button")
+    click_button("Delete #{pet1.name}")
 
     expect(page).not_to have_content(pet1.name)
     expect(page).not_to have_content(pet1.age)

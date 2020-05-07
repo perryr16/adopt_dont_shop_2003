@@ -18,19 +18,13 @@ RSpec.describe "pet create ", type: :feature do
     expect(page).not_to have_css("img[src*='https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg']")
     click_link("New Pet")
 
-    fill_in "pet[name]", with: "Remy"
-    fill_in "pet[age]", with: "10"
-    choose("male")
-    fill_in "pet[image]", with: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg"
-    click_button "submit_button"
 
-    # pet1 = Pet.create(
-    #   name: "Remy",
-    #   age: "10",
-    #   sex: "male",
-    #   image: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg",
-    #   shelter_id: shelter1.id
-    # )
+    fill_in "name", with: "Remy"
+    fill_in "age", with: "10"
+    # choose("male")
+    fill_in "image", with: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg"
+    click_button "Create Pet"
+
     expect(page).to have_content("Remy")
     expect(page).to have_content("10")
     expect(page).to have_content("the lab")

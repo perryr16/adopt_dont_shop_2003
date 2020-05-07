@@ -78,13 +78,13 @@ class SheltersController < ApplicationController
   def create_pet
     shelter = Shelter.find(params[:id])
     pet = Pet.new({
-      name: params[:pet][:name],
-      image: params[:pet][:image],
-      description: params[:pet][:description],
-      age: params[:pet][:age],
-      sex: params[:pet][:sex],
+      name: params[:name],
+      image: params[:image],
+      description: params[:description],
+      age: params[:age],
+      sex: params[:sex],
       # shelter_name: params[:pet][:shelter_name],
-      adoptable: params[:pet][:adoptable],
+      adoptable: true,
       shelter_id: params[:id]
 
       })

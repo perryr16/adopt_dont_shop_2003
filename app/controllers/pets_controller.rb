@@ -29,12 +29,12 @@ class PetsController < ApplicationController
   def update
     pet = Pet.find(params[:id])
     pet.update({
-      name: params[:pet][:name],
-      image: params[:pet][:image],
-      description: params[:pet][:description],
-      age: params[:pet][:age],
-      sex: params[:pet][:sex],
-      adoptable: params[:pet][:adoptable]
+      name: params[:name],
+      image: params[:image],
+      description: params[:description],
+      age: params[:age],
+      sex: params[:sex],
+      adoptable: params[:adoptable]
       })
 
       pet.save
@@ -48,18 +48,21 @@ class PetsController < ApplicationController
   end
 
   def adoptable
+binding.pry
     @pet = Pet.find(params[:id])
     @pet.update({
-      adoptable: params[:pet][:adoptable]
+      adoptable: false
       # adoptable: false
       })
+
     redirect_to "/pets/#{@pet.id}"
   end
 
   def pending
+
     @pet = Pet.find(params[:id])
     @pet.update({
-      adoptable: params[:pet][:adoptable]
+      adoptable: true
       # adoptable: true
       })
     redirect_to "/pets/#{@pet.id}"

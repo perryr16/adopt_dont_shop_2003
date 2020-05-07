@@ -13,27 +13,24 @@
 
   <h1 class="header">Enter A New Shelter Pet</h1>
 
-  <form action="/shelters/<%= @shelter.id %>/pets" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <p>Pet Name:</p>
-    <input type="text" name="pet[name]"/>
-    <p>Pet description</p>
-    <textarea name="pet[description]"></textarea>
-    <p>image url:</p>
-    <input type="text" name="pet[image]">
-    <p>Approximate age:</p>
-    <input type="text" name="pet[age]">
-    <p>Sex:</p>
-    <input id="male" type ="radio" name="pet[sex]" value="male">
-    <label for="male">Male</label><br>
-    <input id="female" type="radio" name="pet[sex]" value="female">
-    <label for="female">Female</label><br>
-    <!-- <p>Name of Shelter:</p> -->
-    <!-- <input type="text" name="pet[shelter_name]">-->
-    <br>
-    <input type="hidden" name="pet[adoptable]" value="true">
-    <!-- <input type="hidden" name="pet[shelter_id]" value=":id"> -->
-    <input class="submit_button hover" name="submit_button" type="submit" value="Create Pet">
-  </form>
+  <section class="bold">
+    <%= form_tag "/shelters/#{@shelter.id}/pets" do %>
+      <%= label_tag :name %><br>
+      <%= text_field_tag :name %><br><br>
+      <%= label_tag :description %><br>
+      <%= text_area_tag :description %><br><br>
+      <%= label_tag :image %><br>
+      <%= text_field_tag :image %><br><br>
+      <%= label_tag :age %><br>
+      <%= text_area_tag :age %><br><br>
+      <%= label_tag :female %><br>
+      <%= radio_button_tag :sex, :female %><br><br>
+      <%= label_tag :male %><br>
+      <%= radio_button_tag :sex, :male %><br>
+      <%= submit_tag "Create Pet" %>
+    <%end %>
+  </section>
+
+
 
 </div> /* final */
