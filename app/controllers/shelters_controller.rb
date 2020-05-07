@@ -65,7 +65,6 @@ class SheltersController < ApplicationController
 
     if params[:adoptable] == "true"
       @pets = @pets.find_all {|pet| pet.adoptable}
-
     elsif params[:adoptable] == "false"
       @pets = @pets.find_all {|pet| !pet.adoptable}
     end

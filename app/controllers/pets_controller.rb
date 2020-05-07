@@ -5,6 +5,12 @@ class PetsController < ApplicationController
     @pets = Pet.adoptable_first
     @shelters = Shelter.all
 
+    if params[:adoptable] == "true"
+      @pets = @pets.find_all {|pet| pet.adoptable}
+    elsif params[:adoptable] == "false"
+      @pets = @pets.find_all {|pet| !pet.adoptable}
+    end
+
   end
 
   def new

@@ -12,6 +12,9 @@
   </div>
 
   <h1 class="header">PETS!</h1>
+  <p><a class="pet-link hover" href="/pets?adoptable=true">Show Only Adoptable Pets</a></p>
+  <p><a class="pet-link hover" href="/pets?adoptable=false">Show Only Pending Adoption Pets</a></p>
+
   <% @pets.each do |pet| %>
   <div class="pet-list">
 
