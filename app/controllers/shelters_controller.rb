@@ -51,11 +51,12 @@ class SheltersController < ApplicationController
   def pets
 
     @shelter = Shelter.find(params[:id])
-    all_pets = Pet.all
-    shelter_pets = all_pets.find_all do |pet|
+    all_pets = Pet.adoptable_first
+    @pets = all_pets.find_all do |pet|
       pet.shelter_id == params[:id].to_i
     end
-    @pets = shelter_pets.find_all { |pet| pet.adoptable}
+
+    # @pets = shelter_pets.find_all { |pet| pet.adoptable}
   end
 
   def new_pet

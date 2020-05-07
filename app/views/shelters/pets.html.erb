@@ -12,6 +12,7 @@
   </div>
 
   <h1 class="header"><%= @shelter.name %> PETS!</h1>
+  <h2>Pet Count: <%= @pets.length %></h2>
   <a class="pet-link hover bold" href="/shelters/<%= @shelter.id %>/pets/new">New Pet</a><br><br>
   <% @pets.each do |pet| %>
 
@@ -22,7 +23,6 @@
     <p>Approximate Age: <%= pet.age %><p>
     <p>Sex: <%= pet.sex %><p>
     <p>Name of Shelter: <%= pet.shelter.name %><p>
-    <p><%= pet.description %></p>
   </div>
 
 

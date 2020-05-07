@@ -6,10 +6,8 @@ class Pet < ApplicationRecord
     return "Pending" if !adoptable
   end
 
-  def self.total_pets
-    count
+  def self.adoptable_first
+    all.sort_by {|pet| pet.adoptable ? 0 : 1}
   end
-
-
 
 end

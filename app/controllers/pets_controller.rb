@@ -1,29 +1,14 @@
 class PetsController < ApplicationController
 
   def index
-    @pets = Pet.all
+    # @pets = Pet.all
+    @pets = Pet.adoptable_first
     @shelters = Shelter.all
 
   end
 
   def new
   end
-
-  # def create
-  #   binding.pry
-  #   pet = Pet.new({
-  #     name: params[:pet][:name],
-  #     image: params[:pet][:image],
-  #     description: params[:pet][:description],
-  #     age: params[:pet][:age],
-  #     sex: params[:pet][:sex],
-  #     shelter_name: params[:pet][:shelter_name],
-  #     adoptable: params[:pet][:adoptable]
-  #     })
-  #
-  #     pet.save
-  #     redirect_to '/pets'
-  # end
 
   def show
     @pet = Pet.find(params[:id])

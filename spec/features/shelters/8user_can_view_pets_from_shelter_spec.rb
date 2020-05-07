@@ -23,7 +23,6 @@ RSpec.describe "Pets can be seen on shelter pet ", type: :feature do
       name: "Walter",
       age: "4",
       sex: "male",
-
       image: "https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg",
       adoptable: true,
       shelter_id: shelter2.id
@@ -44,7 +43,7 @@ RSpec.describe "Pets can be seen on shelter pet ", type: :feature do
 
       image: "https://ichef.bbci.co.uk/news/976/cpsprodpb/16B90/production/_107427039_gettyimages-636475496.jpg",
       adoptable: false,
-      shelter_id: shelter2.id
+      shelter_id: shelter1.id
     )
     pet4 = Pet.create(
       name: "sebastian",
@@ -63,23 +62,19 @@ RSpec.describe "Pets can be seen on shelter pet ", type: :feature do
     expect(page).to have_content(pet1.name)
     expect(page).to have_content(pet1.age)
     expect(page).to have_content(pet1.sex)
-
     expect(page).to have_css("img[src*='https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg']")
 
     expect(page).not_to have_content(pet2.name)
     expect(page).not_to have_content(pet2.age)
-    expect(page).not_to have_content(pet2.sex)
-
     expect(page).not_to have_css("img[src*='https://cf.ltkcdn.net/cats/images/std/200777-425x322-kitten_crop.jpg']")
 
     expect(page).not_to have_content(pet3.name)
     expect(page).not_to have_content(pet3.age)
     expect(page).not_to have_content(pet3.sex)
-    
+
     expect(page).to have_content(pet4.name)
     expect(page).to have_content(pet4.age)
     expect(page).to have_content(pet4.sex)
-
     expect(page).to have_css("img[src*='https://ichef.bbci.co.uk/news/976/cpsprodpb/16B90/production/_107427039_gettyimages-636475496.jpg']")
 
   end
