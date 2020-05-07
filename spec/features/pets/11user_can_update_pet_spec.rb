@@ -1,32 +1,33 @@
 require 'rails_helper'
 
 RSpec.describe "pet update ", type: :feature do
-  it "can update a pet" do
-
-
-    shelter1 = Shelter.create(
+  before :each do
+    @shelter1 = Shelter.create(
       name: "the lab",
       address: "123 Dog Street",
       city: "Dog Town",
       state: "DO",
       zip: "12345"
     )
-    shelter2 = Shelter.create(
+    @shelter2 = Shelter.create(
       name: "Barks and Crafts",
       address: "456 Pup Place",
       city: "Newfoundland",
       state: "PP",
       zip: "67890"
     )
-    pet1 = Pet.create(
+    @pet1 = Pet.create(
       name: "Remy",
       age: "10",
       sex: "male",
       image: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg",
-      shelter_id: shelter2.id
+      shelter_id: @shelter2.id
     )
 
-    visit "/pets/#{pet1.id}/edit"
+  end
+  it "can update a pet" do
+
+    visit "/pets/#{@pet1.id}/edit"
 
     fill_in "name", with: "Goose"
     fill_in "description", with: "hell of a wingman"
@@ -36,10 +37,10 @@ RSpec.describe "pet update ", type: :feature do
     click_button "Update Pet"
 
     click_link "Goose"
-    expect(page).not_to have_content(pet1.name)
-    expect(page).not_to have_content(pet1.age)
+    expect(page).not_to have_content(@pet1.name)
+    expect(page).not_to have_content(@pet1.age)
     # expect(page).not_to have_content(pet1.sex)
-    expect(page).not_to have_content(shelter1.name)
+    expect(page).not_to have_content(@shelter1.name)
     expect(page).not_to have_css("img[src*='https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg']")
 
     expect(page).to have_content("Goose")
@@ -51,63 +52,28 @@ RSpec.describe "pet update ", type: :feature do
   end
 
   it "can update a pet from shelter pet index" do
-    shelter1 = Shelter.create(
-      name: "Barks and Crafts",
-      address: "456 Pup Place",
-      city: "Newfoundland",
-      state: "PP",
-      zip: "67890"
-    )
-    pet1 = Pet.create(
-      name: "Remy",
-      age: "10",
-      sex: "male",
-      image: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg",
-      shelter_id: shelter1.id
-    )
+    visit "/shelters/#{@shelter2.id}/pets"
 
-    visit "/shelters/#{shelter1.id}/pets"
-
-    expect(page).to have_link(href: "/pets/#{pet1.id}/edit")
+    click_link("Update Pet")
+    expect(current_path).to eq("/pets/#{@pet1.id}/edit")
+    # expect(page).to have_link(href: "/pets/#{pet1.id}/edit")
   end
 
   it "can update a pet from pet index" do
-    shelter1 = Shelter.create(
-      name: "Barks and Crafts",
-      address: "456 Pup Place",
-      city: "Newfoundland",
-      state: "PP",
-      zip: "67890"
-    )
-    pet1 = Pet.create(
-      name: "Remy",
-      age: "10",
-      sex: "male",
-      image: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg",
-      shelter_id: shelter1.id
-    )
 
     visit "/pets"
-    expect(page).to have_link(href: "/pets/#{pet1.id}/edit")
+
+    click_link("Update Pet")
+
+    expect(current_path).to eq("/pets/#{@pet1.id}/edit")
   end
   it "can update a pet from pet show" do
-    shelter1 = Shelter.create(
-      name: "Barks and Crafts",
-      address: "456 Pup Place",
-      city: "Newfoundland",
-      state: "PP",
-      zip: "67890"
-    )
-    pet1 = Pet.create(
-      name: "Remy",
-      age: "10",
-      sex: "male",
-      image: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg",
-      shelter_id: shelter1.id
-    )
 
-    visit "/pets/#{pet1.id}"
-    expect(page).to have_link(href: "/pets/#{pet1.id}/edit")
+    visit "/pets/#{@pet1.id}"
+
+    click_link("Update Pet")
+
+    expect(current_path).to eq("/pets/#{@pet1.id}/edit")
   end
 
 end

@@ -1,16 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe "pet create ", type: :feature do
-  it "can create a pet on pets index" do
-    shelter1 = Shelter.create(
+  before :each do
+    @shelter1 = Shelter.create(
       name: "the lab",
       address: "123 Dog Street",
       city: "Dog Town",
       state: "DO",
       zip: "12345"
     )
+  end
 
-    visit "shelters/#{shelter1.id}/pets"
+  it "can create a pet on pets index" do
+
+    visit "shelters/#{@shelter1.id}/pets"
 
     expect(page).not_to have_content("Remy")
     expect(page).not_to have_content("Approximate age: 10")
