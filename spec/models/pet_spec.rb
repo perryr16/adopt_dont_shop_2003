@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Pet, type: :model do
   describe "validates values" do
     it {should validate_presence_of :name}
+
   end
 
   it "can sort pets by adoption status" do
