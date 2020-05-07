@@ -79,4 +79,56 @@ RSpec.describe "Pets can be seen on shelter pet ", type: :feature do
 
   end
 
+  it "can count number of pets in shelter" do
+
+    shelter1 = Shelter.create(
+      name: "Yarn Care",
+      address: "666 cat Ave",
+      city: "fluff town",
+      state: "CT",
+      zip: "12345"
+    )
+
+
+    pet1 = Pet.create(
+      name: "Walter",
+      age: "4",
+      sex: "male",
+      image: "https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg",
+      adoptable: true,
+      shelter_id: shelter1.id
+    )
+    pet2 = Pet.create(
+      name: "Harry",
+      age: "14",
+      sex: "female",
+
+      image: "https://cf.ltkcdn.net/cats/images/std/200777-425x322-kitten_crop.jpg",
+      adoptable: true,
+      shelter_id: shelter1.id
+    )
+    pet3 = Pet.create(
+      name: "Penny",
+      age: "17",
+      sex: "female",
+
+      image: "https://ichef.bbci.co.uk/news/976/cpsprodpb/16B90/production/_107427039_gettyimages-636475496.jpg",
+      adoptable: false,
+      shelter_id: shelter1.id
+    )
+    pet4 = Pet.create(
+      name: "sebastian",
+      age: "100",
+      sex: "male",
+
+      image: "https://ichef.bbci.co.uk/news/976/cpsprodpb/16B90/production/_107427039_gettyimages-636475496.jpg",
+      adoptable: true,
+      shelter_id: shelter1.id
+    )
+    visit "/shelters/#{shelter1.id}/pets"
+
+    expect(page).to have_content("Pet Count: 4")
+
+  end
+
 end
