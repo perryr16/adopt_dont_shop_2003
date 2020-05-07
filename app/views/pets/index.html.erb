@@ -12,6 +12,8 @@
   </div>
 
   <h1 class="header">PETS!</h1>
-  <p><%= @pets %></p>
+  <% @pets.each do |pet|%>
+  <p>pet: <%= pet %></p>
+  <% end %>
 
   </div>
