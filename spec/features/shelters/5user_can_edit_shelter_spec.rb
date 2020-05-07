@@ -24,6 +24,34 @@ RSpec.describe "Shleters edit page", type: :feature do
     expect(page).to have_content("City: newfoundland")
     expect(page).to have_content("State: BO")
     expect(page).to have_content("Zip: 99999")
+  end
+
+  it "can go to edit page from index" do
+    shelter1 = Shelter.create(
+      name: "the lab",
+      address: "123 Dog Street",
+      city: "Dog Town",
+      state: "DO",
+      zip: "12345"
+    )
+
+    visit "/shelters"
+
+    expect(page).to have_link(href: "/shelters/#{shelter1.id}/edit")
+
+  end
+  it "can go to edit page from show" do
+    shelter1 = Shelter.create(
+      name: "the lab",
+      address: "123 Dog Street",
+      city: "Dog Town",
+      state: "DO",
+      zip: "12345"
+    )
+
+    visit "/shelters/#{shelter1.id}"
+
+    expect(page).to have_link(href: "/shelters/#{shelter1.id}/edit")
 
   end
 end

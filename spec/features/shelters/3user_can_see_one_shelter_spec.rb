@@ -33,4 +33,25 @@ RSpec.describe "Shleter page", type: :feature do
     expect(page).to have_content("Zip: #{shelter2.zip}")
 
   end
+
+  it "can go to pet pages" do
+    shelter1 = Shelter.create(
+      name: "the lab",
+      address: "123 Dog Street",
+      city: "Dog Town",
+      state: "DO",
+      zip: "12345"
+    )
+    pet1 = Pet.create(
+      name: "Remy",
+      age: "10",
+      sex: "male",
+      image: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg",
+      shelter_id: shelter1.id
+    )
+
+    visit "/shelters/#{shelter1.id}"
+
+    expect(page).to have_link(href: "/shelters/#{shelter1.id}/pets")
+  end
 end

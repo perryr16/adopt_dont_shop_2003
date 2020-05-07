@@ -48,8 +48,66 @@ RSpec.describe "pet update ", type: :feature do
     expect(page).to have_content("female")
     expect(page).to have_content("Barks and Crafts")
     expect(page).to have_css("img[src*='https://ih1.redbubble.net/image.489763103.8167/flat,750x1000,075,f.u2.jpg']")
+  end
 
+  it "can update a pet from shelter pet index" do
+    shelter1 = Shelter.create(
+      name: "Barks and Crafts",
+      address: "456 Pup Place",
+      city: "Newfoundland",
+      state: "PP",
+      zip: "67890"
+    )
+    pet1 = Pet.create(
+      name: "Remy",
+      age: "10",
+      sex: "male",
+      image: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg",
+      shelter_id: shelter1.id
+    )
 
+    visit "/shelters/#{shelter1.id}/pets"
+
+    expect(page).to have_link(href: "/pets/#{pet1.id}/edit")
+  end
+
+  it "can update a pet from pet index" do
+    shelter1 = Shelter.create(
+      name: "Barks and Crafts",
+      address: "456 Pup Place",
+      city: "Newfoundland",
+      state: "PP",
+      zip: "67890"
+    )
+    pet1 = Pet.create(
+      name: "Remy",
+      age: "10",
+      sex: "male",
+      image: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg",
+      shelter_id: shelter1.id
+    )
+
+    visit "/pets"
+    expect(page).to have_link(href: "/pets/#{pet1.id}/edit")
+  end
+  it "can update a pet from pet show" do
+    shelter1 = Shelter.create(
+      name: "Barks and Crafts",
+      address: "456 Pup Place",
+      city: "Newfoundland",
+      state: "PP",
+      zip: "67890"
+    )
+    pet1 = Pet.create(
+      name: "Remy",
+      age: "10",
+      sex: "male",
+      image: "https://thesmartcanine.com/wp-content/uploads/2019/09/labrador-pitbull-mix.jpg",
+      shelter_id: shelter1.id
+    )
+
+    visit "/pets/#{pet1.id}"
+    expect(page).to have_link(href: "/pets/#{pet1.id}/edit")
   end
 
 end
