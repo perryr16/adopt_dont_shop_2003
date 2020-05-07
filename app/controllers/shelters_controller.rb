@@ -53,10 +53,10 @@ class SheltersController < ApplicationController
     shelters = Shelter.all
     shelters.destroy(params[:id])
     redirect_to '/shelters'
+    #Shelter.destoy(params[:id])
   end
 
   def pets
-
     @shelter = Shelter.find(params[:id])
     all_pets = Pet.adoptable_first
     @pets = all_pets.find_all do |pet|
