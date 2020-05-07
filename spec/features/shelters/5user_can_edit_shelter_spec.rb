@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Shleters edit page", type: :feature do
-  it "can edit a shelter's info" do
-    shelter1 = Shelter.create(
+  before :each do
+    @shelter1 = Shelter.create(
       name: "the lab",
       address: "123 Dog Street",
       city: "Dog Town",
@@ -10,8 +10,11 @@ RSpec.describe "Shleters edit page", type: :feature do
       zip: "12345"
     )
 
-    visit "/shelters/#{shelter1.id}/edit"
-    # save_and_open_page
+  end
+  it "can edit a shelter's info" do
+
+    visit "/shelters/#{@shelter1.id}/edit"
+
     fill_in "name", with: "Barks and Crafts"
     fill_in "address", with: "123 Ruff St"
     fill_in "city", with: "Dog town"
@@ -19,7 +22,7 @@ RSpec.describe "Shleters edit page", type: :feature do
     fill_in "zip", with: "99999"
     click_on "Update Shelter"
 
-    expect(current_path).to eq("/shelters/#{shelter1.id}")
+    expect(current_path).to eq("/shelters/#{@shelter1.id}")
 
     expect(page).to have_content("Name: Barks and Crafts")
     expect(page).to have_content("Address: 123 Ruff St")
@@ -29,31 +32,18 @@ RSpec.describe "Shleters edit page", type: :feature do
   end
 
   it "can go to edit page from index" do
-    shelter1 = Shelter.create(
-      name: "the lab",
-      address: "123 Dog Street",
-      city: "Dog Town",
-      state: "DO",
-      zip: "12345"
-    )
 
     visit "/shelters"
 
-    expect(page).to have_link(href: "/shelters/#{shelter1.id}/edit")
+    expect(page).to have_link(href: "/shelters/#{@shelter1.id}/edit")
 
   end
   it "can go to edit page from show" do
-    shelter1 = Shelter.create(
-      name: "the lab",
-      address: "123 Dog Street",
-      city: "Dog Town",
-      state: "DO",
-      zip: "12345"
-    )
 
-    visit "/shelters/#{shelter1.id}"
 
-    expect(page).to have_link(href: "/shelters/#{shelter1.id}/edit")
+    visit "/shelters/#{@shelter1.id}"
+
+    expect(page).to have_link(href: "/shelters/#{@shelter1.id}/edit")
 
   end
 end

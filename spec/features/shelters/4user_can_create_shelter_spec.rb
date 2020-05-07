@@ -19,6 +19,10 @@ RSpec.describe "Shleters edit page", type: :feature do
     expect(page).to have_content("Barks and Crafts")
 
     click_link "Barks and Crafts"
+    
+    last_shelter = Shelter.last
+
+    expect(current_path).to eq("/shelters/#{last_shelter.id}")
 
     expect(page).to have_content("Name: Barks and Crafts")
     expect(page).to have_content("Address: 123 Ruff St")
