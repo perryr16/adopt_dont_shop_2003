@@ -65,6 +65,7 @@ RSpec.describe Pet, type: :model do
   end
 
   it "can list adoptable pets" do
+
     params = {:adoptable => "true"}
     expect(Pet.pet_list(params)).to eq([@pet2, @pet4])
   end

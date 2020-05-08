@@ -1,17 +1,8 @@
 class SheltersController < ApplicationController
 
   def index
-    @shelters = Shelter.all
+    @shelters = Shelter.shelter_list(params)
     @pets = Pet.all
-
-    if params[:alphabetical] == "true"
-      @shelters = Shelter.order("lower(name)")
-    elsif params[:num_pets] == "true"
-      # binding.pry
-      # @shelters = Shelter.joins(:pets).distinct
-      # @pets = Pet.group(:shelter_id).count
-      @shelters = @shelters.sort_by {|shelter| shelter.pets.count}.reverse
-    end
   end
 
   def new
