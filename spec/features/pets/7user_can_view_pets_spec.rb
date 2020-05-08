@@ -34,22 +34,6 @@ RSpec.describe "Pets can be seen on index ", type: :feature do
   end
 
   it "can view a pet" do
-    # shelter1 = Shelter.create(
-    #   name: "the lab",
-    #   address: "666 dog Ave",
-    #   city: "ruff town",
-    #   state: "DG",
-    #   zip: "12345"
-    # )
-    # pet1 = Pet.create(
-    #   name: "Walter",
-    #   age: "4",
-    #   sex: "male",
-    #   description: "a bit mischevious",
-    #
-    #   image: "https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg",
-    #   shelter_id: shelter1.id
-    # )
 
     visit "/pets"
 

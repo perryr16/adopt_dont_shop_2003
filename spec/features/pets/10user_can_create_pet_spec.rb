@@ -9,10 +9,10 @@ RSpec.describe "pet create ", type: :feature do
       state: "DO",
       zip: "12345"
     )
+
   end
 
   it "can create a pet on pets index" do
-
     visit "shelters/#{@shelter1.id}/pets"
 
     expect(page).not_to have_content("Remy")
