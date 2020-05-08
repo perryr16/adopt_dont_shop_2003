@@ -7,7 +7,9 @@ class SheltersController < ApplicationController
     if params[:alphabetical] == "true"
       @shelters = Shelter.order("lower(name)")
     elsif params[:num_pets] == "true"
-      # @shelters = Shelter.order(:pets)
+      # binding.pry
+      # @shelters = Shelter.joins(:pets).distinct
+      # @pets = Pet.group(:shelter_id).count
       @shelters = @shelters.sort_by {|shelter| shelter.pets.count}.reverse
     end
   end
@@ -54,17 +56,5 @@ class SheltersController < ApplicationController
     Shelter.destroy(params[:id])
     redirect_to '/shelters'
   end
-
-  # def pets
-  #   @shelter = Shelter.find(params[:id])
-  #   @pets = Pet.where(shelter_id: params[:id]).order(:adoptable).reverse_order
-  #
-  #   if params[:adoptable] == "true"
-  #     @pets = @pets.where(adoptable: true)
-  #   elsif params[:adoptable] == "false"
-  #     @pets = @pets.where(adoptable: false)
-  #   end
-  #
-  # end
 
 end

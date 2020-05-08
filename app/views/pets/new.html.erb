@@ -26,6 +26,7 @@
       <%= radio_button_tag :sex, :female %><br><br>
       <%= label_tag :male %><br>
       <%= radio_button_tag :sex, :male %><br>
+      <%= hidden_field_tag :adoptable, true %>
       <%= submit_tag "Create Pet" %>
     <%end %>
   </section>
