@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.describe Shelter, type: :model do
   describe "validates values" do
     it {should validate_presence_of :name}
+    it {should validate_presence_of :address}
+    it {should validate_presence_of :city}
+    it {should validate_presence_of :state}
+    it {should validate_presence_of :zip}
   end
 
   it "can list shelters in alphabetical order" do
