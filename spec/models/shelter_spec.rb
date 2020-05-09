@@ -47,6 +47,13 @@ RSpec.describe Shelter, type: :model do
       state: "CA",
       zip: "67890"
     )
+    @shelter3 = Shelter.create(
+      name: "no pets",
+      address: "888 fluff way",
+      city: "Fur ball",
+      state: "PT",
+      zip: "55555"
+    )
     @pet1 = Pet.create(
       name: "many pets",
       age: "4",
@@ -68,10 +75,20 @@ RSpec.describe Shelter, type: :model do
       shelter_id: @shelter2.id,
       adoptable: true
     )
+    @pet3 = Pet.create(
+      name: "Aggie",
+      age: "25",
+      sex: "female",
+      description: "a rabbit",
+
+      image: "https://www.rover.com/blog/wp-content/uploads/2019/05/puppy-in-bowl.jpg",
+      shelter_id: @shelter1.id,
+      adoptable: true
+    )
     params = {}
-    expect(Shelter.shelter_list(params)).to eq([@shelter1, @shelter2])
+    expect(Shelter.shelter_list(params)).to eq([@shelter1, @shelter2, @shelter3])
     params = {:num_pets => "true"}
-    expect(Shelter.shelter_list(params)).to eq([@shelter2, @shelter1])
+    expect(Shelter.shelter_list(params)).to eq([@shelter2, @shelter1, @shelter3])
   end
 
 end
