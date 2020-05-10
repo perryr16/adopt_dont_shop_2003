@@ -17,10 +17,10 @@
     <h3>Pet Count: <%= @shelter.pets.length %></h3>
     <p><a class="pet-link hover bold" href="/shelters/<%= @shelter.id %>/pets/new">Create Pet</a></p>
     <p><a class="pet-link hover" href="/shelters/<%= @shelter.id %>/pets?adoptable=true">Show Only <%= @shelter.name %> Adoptable Pets</a></p>
-    <p><a class="pet-link hover" href="/shelters/<%= @shelter.id %>/pets?adoptable=false">Show Only <%= @shelter.name %> Pending Adoption Pets</a></p>
+    <p><a class="pet-link hover" href="/shelters/<%= @shelter.id %>/pets?adoptable=false">Show Only <%= @shelter.name %> Adoption-Pending Pets</a></p>
   <% elsif @shelter.nil? %>
   <p><a class="pet-link hover" href="/pets?adoptable=true">Show Only Adoptable Pets</a></p>
-  <p><a class="pet-link hover" href="/pets?adoptable=false">Show Only Pending Adoption Pets</a></p>
+  <p><a class="pet-link hover" href="/pets?adoptable=false">Show Only Adoption-Pending Pets</a></p>
 
   <% end %>
 

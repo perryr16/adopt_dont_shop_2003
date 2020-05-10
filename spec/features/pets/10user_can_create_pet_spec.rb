@@ -36,7 +36,7 @@ end
 
 it "can create a pet on shelter show" do
   visit "shelters/#{@shelter1.id}"
-save_and_open_page
+
   expect(page).not_to have_content("Remy")
   expect(page).not_to have_content("Approximate age: 10")
   expect(page).not_to have_content("Name of shelter: the lab")

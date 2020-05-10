@@ -93,7 +93,7 @@ RSpec.describe "Pets can be seen on index ", type: :feature do
     expect(page).to have_content(@pet2.shelter.name)
     expect(page).to have_css("img[src*='https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg']")
 
-    click_link("Show Only Pending Adoption Pets")
+    click_link("Show Only Adoption-Pending Pets")
 
     expect(page).to have_content(@pet2.name)
     expect(page).to have_content(@pet2.age)

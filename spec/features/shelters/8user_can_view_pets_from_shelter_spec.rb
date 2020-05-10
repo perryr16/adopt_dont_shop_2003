@@ -154,7 +154,7 @@ RSpec.describe "Pets can be seen on shelter pet ", type: :feature do
     expect(page).to have_content(@pet5.shelter.name)
 
 
-    click_link("Show Only Yarn Care Pending Adoption Pets")
+    click_link("Show Only Yarn Care Adoption-Pending Pets")
     expect(page).not_to have_content(@pet2.name)
     expect(page).not_to have_content(@pet2.age)
     expect(page).not_to have_css("img[src*='https://www.rover.com/blog/wp-content/uploads/2019/05/puppy-in-bowl.jpg']")
