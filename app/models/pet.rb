@@ -12,7 +12,12 @@ class Pet < ApplicationRecord
 
   def self.pet_list(params)
 
-    if params[:adoptable] == "true"
+    if !params[:id].nil? && params[:adoptable] == "true"
+      where(adoptable: true).where(shelter_id: params[:id]).order(:adoptable).reverse_order
+    elsif !params[:id].nil? && params[:adoptable] == "false"
+      where(adoptable: false).where(shelter_id: params[:id]).order(:adoptable).reverse_order
+    elsif params[:adoptable] == "true"
+    # if params[:adoptable] == "true"
       where(adoptable: true)
     elsif params[:adoptable] == "false"
       where(adoptable: false)

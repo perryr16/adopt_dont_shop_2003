@@ -13,14 +13,19 @@
 
   <h1 class="header">PETS!</h1>
   <% if !@shelter.nil? %>
+  <p>top</p>
     <h2>At <%= @shelter.name %></h2>
     <h3>Pet Count: <%= @shelter.pets.length %></h3>
     <p><a class="pet-link hover bold" href="/shelters/<%= @shelter.id %>/pets/new">New Pet</a></p>
+    <p><a class="pet-link hover" href="/shelters/<%= @shelter.id %>/pets?adoptable=true">Show Only <%= @shelter.name %> Adoptable Pets</a></p>
+    <p><a class="pet-link hover" href="/shelters/<%= @shelter.id %>/pets?adoptable=false">Show Only <%= @shelter.name %> Pending Adoption Pets</a></p>
+  <% elsif @shelter.nil? %>
+  <p>bottom</p>
+  <p><a class="pet-link hover" href="/pets?adoptable=true">Show Only Adoptable Pets</a></p>
+  <p><a class="pet-link hover" href="/pets?adoptable=false">Show Only Pending Adoption Pets</a></p>
 
   <% end %>
 
-  <p><a class="pet-link hover" href="/pets?adoptable=true">Show Only Adoptable Pets</a></p>
-  <p><a class="pet-link hover" href="/pets?adoptable=false">Show Only Pending Adoption Pets</a></p>
 
   <% @pets.each do |pet| %>
   <div class="pet-list">

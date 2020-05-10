@@ -67,18 +67,17 @@ RSpec.describe Pet, type: :model do
     expect(@pet1.adoption_status).to eq("Pending")
   end
 
-  it "can list adoptable pets" do
-
+  it "can list adoptable pets on pet index" do
     params = {:adoptable => "true"}
     expect(Pet.pet_list(params)).to eq([@pet2, @pet4])
   end
 
-  it "can list adoption pending pets" do
+  it "can list adoption pending pets on pet index" do
     params = {:adoptable => "false"}
     expect(Pet.pet_list(params)).to eq([@pet1, @pet3])
   end
 
-  it "can list pets by adoptable first" do
+  it "can list pets by adoptable first on pet index" do
     params = {}
     expect(Pet.pet_list(params)).to eq([@pet2, @pet4, @pet1, @pet3])
   end
@@ -86,7 +85,16 @@ RSpec.describe Pet, type: :model do
   it "can list pets by shelter, adoptable first" do
     params = {:id => @shelter1.id}
     expect(Pet.pet_list(params)).to eq([@pet2, @pet1, @pet3])
+  end
 
+  it "can list adoptable pets on shelter pet index" do
+    params = {:id => @shelter1.id, :adoptable => "true"}
+    expect(Pet.pet_list(params)).to eq([@pet2])
+  end
+
+  it "can list pending adoption pets on shelter pet index" do
+    params = {:id => @shelter1.id, :adoptable => "false"}
+    expect(Pet.pet_list(params)).to eq([@pet1, @pet3])
   end
 
 end

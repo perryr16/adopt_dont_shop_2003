@@ -101,70 +101,41 @@ RSpec.describe "Pets can be seen on shelter pet ", type: :feature do
   end
 
   it "can list only adoptable pets" do
-    shelter1 = Shelter.create(
-      name: "the lab",
-      address: "666 dog Ave",
-      city: "ruff town",
-      state: "DG",
-      zip: "12345"
-    )
-    pet1 = Pet.create(
-      name: "Walter",
-      age: "4",
-      sex: "male",
-      description: "a bit mischevious",
 
-      image: "https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg",
-      shelter_id: shelter1.id,
-      adoptable: true
-    )
+    visit "/shelters/#{@shelter1.id}/pets"
 
-    pet2 = Pet.create(
-      name: "Penny",
-      age: "55",
-      sex: "female",
-      description: "known to eat goose poop",
+    expect(page).to have_content(@pet3.name)
+    expect(page).to have_content(@pet3.age)
+    expect(page).to have_content(@pet3.sex)
+    expect(page).to have_content(@pet3.shelter.name)
+    expect(page).to have_css("img[src*='https://ichef.bbci.co.uk/news/976/cpsprodpb/16B90/production/_107427039_gettyimages-636475496.jpg']")
 
-      image: "https://www.rover.com/blog/wp-content/uploads/2019/05/puppy-in-bowl.jpg",
-      shelter_id: shelter1.id,
-      adoptable: false
-    )
-    visit "/shelters/#{shelter1.id}/pets"
+    expect(page).to have_content(@pet2.name)
+    expect(page).to have_content(@pet2.age)
+    expect(page).to have_content(@pet2.sex)
+    expect(page).to have_content(@pet2.shelter.name)
+    expect(page).to have_css("img[src*='https://cf.ltkcdn.net/cats/images/std/200777-425x322-kitten_crop.jpg']")
 
-    expect(page).to have_content(pet1.name)
-    expect(page).to have_content(pet1.age)
-    expect(page).to have_content(pet1.sex)
-    expect(page).to have_content(pet1.shelter.name)
-    expect(page).to have_css("img[src*='https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg']")
+    click_link("Show Only Yarn Care Adoptable Pets")
 
-    expect(page).to have_content(pet2.name)
-    expect(page).to have_content(pet2.age)
-    expect(page).to have_content(pet2.sex)
-    expect(page).to have_content(pet2.shelter.name)
-    expect(page).to have_css("img[src*='https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg']")
+    expect(page).not_to have_content(@pet3.name)
+    expect(page).not_to have_content(@pet3.age)
+    # expect(page).not_to have_content(@pet3.sex)
+    # expect(page).not_to have_content(@pet3.shelter.name)
+    expect(page).not_to have_css("img[src*='https://ichef.bbci.co.uk/news/976/cpsprodpb/16B90/production/_107427039_gettyimages-636475496.jpg']")
 
-    click_link("Show Only Adoptable Pets")
+    expect(page).to have_content(@pet2.name)
+    expect(page).to have_content(@pet2.age)
+    expect(page).to have_content(@pet2.sex)
+    expect(page).to have_content(@pet2.shelter.name)
+    expect(page).to have_css("img[src*='https://cf.ltkcdn.net/cats/images/std/200777-425x322-kitten_crop.jpg']")
 
-    expect(page).to have_content(pet1.name)
-    expect(page).to have_content(pet1.age)
-    expect(page).to have_content(pet1.sex)
-    expect(page).to have_content(pet1.shelter.name)
-    expect(page).to have_css("img[src*='https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg']")
-
-
-    expect(page).not_to have_content(pet2.name)
-    expect(page).not_to have_content(pet2.age)
-    # expect(page).not_to have_content(pet2.sex)
-    # expect(page).not_to have_content(pet2.shelter.name)
-    expect(page).not_to have_css("img[src*='https://www.rover.com/blog/wp-content/uploads/2019/05/puppy-in-bowl.jpg']")
 
   end
 
   it "can list only adoption pending pets" do
 
     visit "/shelters/#{@shelter1.id}/pets"
-
-
 
     expect(page).to have_content(@pet2.name)
     expect(page).to have_content(@pet2.age)
@@ -183,24 +154,7 @@ RSpec.describe "Pets can be seen on shelter pet ", type: :feature do
     expect(page).to have_content(@pet5.shelter.name)
 
 
-    click_link("Show Only Adoptable Pets")
-
-    expect(page).to have_content(@pet2.name)
-    expect(page).to have_content(@pet2.age)
-    expect(page).to have_content(@pet2.sex)
-    expect(page).to have_content(@pet2.shelter.name)
-
-    expect(page).not_to have_content(@pet3.name)
-    expect(page).not_to have_content(@pet3.age)
-    # expect(page).not_to have_content(@pet2.sex)
-    # expect(page).not_to have_content(@pet2.shelter.name)
-
-    expect(page).not_to have_content(@pet5.name)
-    expect(page).not_to have_content(@pet5.age)
-    # expect(page).not_to have_content(@pet2.sex)
-    # expect(page).not_to have_content(@pet2.shelter.name)
-
-    click_link("Show Only Pending Adoption Pets")
+    click_link("Show Only Yarn Care Pending Adoption Pets")
     expect(page).not_to have_content(@pet2.name)
     expect(page).not_to have_content(@pet2.age)
     expect(page).not_to have_css("img[src*='https://www.rover.com/blog/wp-content/uploads/2019/05/puppy-in-bowl.jpg']")
@@ -209,7 +163,7 @@ RSpec.describe "Pets can be seen on shelter pet ", type: :feature do
     expect(page).to have_content(@pet3.age)
     expect(page).to have_content(@pet3.sex)
     expect(page).to have_content(@pet3.shelter.name)
-    expect(page).not_to have_css("img[src*='https://thesmartcanine.com/wp-content/uploads/2019/09/sealyham-terrier-small-dog.jpg']")
+    expect(page).to have_css("img[src*='https://ichef.bbci.co.uk/news/976/cpsprodpb/16B90/production/_107427039_gettyimages-636475496.jpg']")
 
     expect(page).to have_content(@pet5.name)
     expect(page).to have_content(@pet5.age)
