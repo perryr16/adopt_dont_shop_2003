@@ -12,6 +12,10 @@ class SheltersController < ApplicationController
   def create
     shelter = Shelter.create!(shelter_params)
     redirect_to '/shelters'
+    # if shelter.save  == true #boolean response, true if saved
+    #   redirect_to '/shelters'
+    # else
+    #   render.newse
   end
 
   def show

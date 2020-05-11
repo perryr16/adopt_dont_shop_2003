@@ -69,6 +69,7 @@ RSpec.describe "Shleters index page", type: :feature do
 
 
     expect(page.all('h2')[-2]).to have_content(@shelter1.name)
+    #checkout orderly gem
     expect(page.all('h2')[-1]).to have_content(@shelter2.name)
     click_link("Sort Shelters by Number of Pets")
 
